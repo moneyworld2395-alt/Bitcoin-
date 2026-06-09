@@ -8,12 +8,11 @@
     <style>
         body { background-color: #000; }
         .bg-custom-dark { background-color: #0b1120; }
-        .card-custom { background-color: #111827; border: 1px solid #1f2937; }
+        .input-dark { background: #1f2937; border: 1px solid #374151; color: white; }
         .btn-gold { background-color: #e5d399; color: #111827; }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
-
     <div class="bg-custom-dark w-full max-w-md min-h-[600px] rounded-[30px] shadow-2xl p-8 flex flex-col justify-center">
         <div class="text-center mb-10">
             <div class="w-24 h-24 rounded-full bg-[#1f2937] flex items-center justify-center mx-auto mb-4 border border-gray-600">
@@ -21,45 +20,22 @@
             </div>
             <h1 class="text-white text-2xl font-bold tracking-wide">Fintech Wallet</h1>
         </div>
-
         <form onsubmit="handleLogin(event)" class="space-y-4">
-            <div class="bg-[#1f2937] rounded-2xl overflow-hidden border border-gray-700">
-                <input type="tel" id="login-phone" required class="w-full bg-transparent px-5 py-4 text-white placeholder-gray-500 focus:outline-none" placeholder="Número de Celular">
-            </div>
-            <div class="bg-[#1f2937] rounded-2xl overflow-hidden border border-gray-700">
-                <input type="password" id="login-password" required class="w-full bg-transparent px-5 py-4 text-white placeholder-gray-500 focus:outline-none" placeholder="Contraseña">
-            </div>
-            <button type="submit" class="w-full btn-gold font-bold py-4 rounded-2xl text-center text-lg transition-opacity hover:opacity-90 mt-6" id="btn-login-submit" disabled>
+            <input type="tel" id="login-phone" required class="w-full input-dark py-4 px-5 rounded-2xl focus:outline-none" placeholder="Número de Celular">
+            <input type="password" id="login-password" required class="w-full input-dark py-4 px-5 rounded-2xl focus:outline-none" placeholder="Contraseña">
+            <button type="submit" id="btn-login-submit" class="w-full btn-gold font-bold py-4 rounded-2xl text-center text-lg mt-6 hover:opacity-90">
                 Acceder
             </button>
         </form>
-
         <div class="mt-8 text-center">
             <a href="registro.html" class="text-gray-500 hover:text-white text-sm uppercase tracking-widest font-semibold">¿No tienes cuenta? Regístrate</a>
         </div>
     </div>
-
     <script>
-        const loginPhone = document.getElementById('login-phone');
-        const loginPass = document.getElementById('login-password');
-        const btnLoginSubmit = document.getElementById('btn-login-submit');
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyWERSY67rLrdlDd--xvtfoDnTEkifXONoNlL9jGk7GlY7rnBL7PsClTZClNasUG3n9wA/exec';
-
-        function validateInputs() {
-            if (loginPhone.value.trim() !== "" && loginPass.value.trim() !== "") {
-                btnLoginSubmit.disabled = false;
-                btnLoginSubmit.classList.add('opacity-100');
-            } else {
-                btnLoginSubmit.disabled = true;
-            }
-        }
-        loginPhone.addEventListener('input', validateInputs);
-        loginPass.addEventListener('input', validateInputs);
-
         function handleLogin(event) {
             event.preventDefault();
             alert('Conectando con base de datos...');
-            // Aquí puedes añadir la lógica para consultar tus datos de Google Sheets
+            // Lógica pendiente de verificación contra Sheets
         }
     </script>
 </body>
