@@ -15,26 +15,20 @@
 <body class="min-h-screen flex items-center justify-center p-4">
 
     <div class="bg-custom-dark w-full max-w-md min-h-[600px] rounded-[30px] shadow-2xl p-8 flex flex-col justify-center">
-        
-        <!-- Header -->
         <div class="text-center mb-10">
             <div class="w-24 h-24 rounded-full bg-[#1f2937] flex items-center justify-center mx-auto mb-4 border border-gray-600">
                 <span class="text-white font-serif text-3xl font-bold">FW</span>
             </div>
             <h1 class="text-white text-2xl font-bold tracking-wide">Fintech Wallet</h1>
-            <p class="text-gray-400 text-sm mt-2">Acceso a tu inversión</p>
         </div>
 
-        <!-- Formulario estilo 1000143861.jpg -->
         <form onsubmit="handleLogin(event)" class="space-y-4">
             <div class="bg-[#1f2937] rounded-2xl overflow-hidden border border-gray-700">
                 <input type="tel" id="login-phone" required class="w-full bg-transparent px-5 py-4 text-white placeholder-gray-500 focus:outline-none" placeholder="Número de Celular">
             </div>
-
             <div class="bg-[#1f2937] rounded-2xl overflow-hidden border border-gray-700">
                 <input type="password" id="login-password" required class="w-full bg-transparent px-5 py-4 text-white placeholder-gray-500 focus:outline-none" placeholder="Contraseña">
             </div>
-
             <button type="submit" class="w-full btn-gold font-bold py-4 rounded-2xl text-center text-lg transition-opacity hover:opacity-90 mt-6" id="btn-login-submit" disabled>
                 Acceder
             </button>
@@ -43,13 +37,13 @@
         <div class="mt-8 text-center">
             <a href="registro.html" class="text-gray-500 hover:text-white text-sm uppercase tracking-widest font-semibold">¿No tienes cuenta? Regístrate</a>
         </div>
-
     </div>
 
     <script>
         const loginPhone = document.getElementById('login-phone');
         const loginPass = document.getElementById('login-password');
         const btnLoginSubmit = document.getElementById('btn-login-submit');
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyWERSY67rLrdlDd--xvtfoDnTEkifXONoNlL9jGk7GlY7rnBL7PsClTZClNasUG3n9wA/exec';
 
         function validateInputs() {
             if (loginPhone.value.trim() !== "" && loginPass.value.trim() !== "") {
@@ -64,9 +58,10 @@
 
         function handleLogin(event) {
             event.preventDefault();
-            // Lógica de validación...
-            alert('Ingreso procesado');
+            alert('Conectando con base de datos...');
+            // Aquí puedes añadir la lógica para consultar tus datos de Google Sheets
         }
     </script>
 </body>
 </html>
+
