@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Kanguroo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000; }
+        .bg-custom-dark { background-color: #0b1120; }
+        .input-dark { background: #1f2937; border: 1px solid #374151; color: white; }
+        .btn-gold { background-color: #e5d399; color: #111827; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-custom-dark w-full max-w-md min-h-[600px] rounded-[30px] shadow-2xl p-8 flex flex-col">
+        <h2 class="text-3xl font-extrabold text-white mb-8 tracking-tight">¡Únete a<br>Kanguroo!</h2>
+
+        <form onsubmit="sendToCloudDatabase(event)" class="space-y-6">
+            <input type="text" id="reg-name" required class="w-full input-dark py-4 px-5 rounded-2xl focus:outline-none" placeholder="Nombre y Apellido">
+            <input type="tel" id="reg-phone" required class="w-full input-dark py-4 px-5 rounded-2xl focus:outline-none" placeholder="Celular (8 dígitos)">
+            <input type="password" id="reg-password" required class="w-full input-dark py-4 px-5 rounded-2xl focus:outline-none" placeholder="Contraseña">
+
+            <button type="submit" id="btn-registrar" class="w-full btn-gold font-bold py-4 rounded-2xl text-center uppercase tracking-wider hover:opacity-90">
+                Registrar
+            </button>
+            
+            <a href="index.html" class="block w-full text-center text-gray-400 text-sm hover:text-white">
+                ¿Ya tienes cuenta? Iniciar sesión
+            </a>
+        </form>
+    </div>
+
+    <script>
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyWERSY67rLrdlDd--xvtfoDnTEkifXONoNlL9jGk7GlY7rnBL7PsClTZClNasUG3n9wA/exec';
+
+        function sendToCloudDatabase(event) {
+            event.preventDefault();
+            const btn = document.getElementById('btn-registrar');
+            const data = {
+                name: document.getElementById('reg-name').value.trim(),
+                email: document.getElementById('reg-phone').value.trim(),
+                password: document.getElementById('reg-password').value.trim()
+            };
+
+            btn.disabled = true;
+            btn.innerText = "REGISTRANDO...";
+
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                alert('¡Registro Exitoso!');
+                window.location.href = "index.html";
+            })
+            .catch(error => {
+                alert('Error al registrar, inténtalo de nuevo.');
+                btn.disabled = false;
+                btn.innerText = "REGISTRAR";
+            });
+        }
+    </script>
+</body>
+</html>
