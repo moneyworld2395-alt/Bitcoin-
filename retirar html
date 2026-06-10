@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retirar Fondos - Kanguroo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000; }
+        .bg-custom-dark { background-color: #0b1120; }
+        .card-custom { background-color: #111827; border: 1px solid #1f2937; }
+        .btn-whatsapp { background-color: #25D366; color: white; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-custom-dark w-full max-w-md min-h-[600px] rounded-[30px] shadow-2xl p-8 flex flex-col items-center">
+        
+        <div class="w-full flex items-center mb-8">
+            <button onclick="window.location.href='menu.html'" class="text-white text-2xl mr-4 hover:opacity-70">←</button>
+            <h2 class="text-white font-bold uppercase tracking-wide">Retirar Fondos</h2>
+        </div>
+
+        <div class="card-custom w-full rounded-[30px] p-8 text-center">
+            <h3 class="text-white font-bold text-xl mb-4">¿Cómo retirar?</h3>
+            <p class="text-gray-400 text-sm mb-8">Para procesar tu retiro, serás redirigido a nuestro centro de atención en WhatsApp donde un asesor validará tu solicitud.</p>
+
+            <a href="https://wa.me/591XXXXXXXX?text=Hola,%20quisiera%20solicitar%20un%20retiro." 
+               target="_blank"
+               class="btn-whatsapp w-full block font-bold py-4 rounded-2xl hover:opacity-90 transition-opacity">
+               Hablar con Asesor (WhatsApp)
+            </a>
+        </div>
+    </div>
+</body>
+</html>
