@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Fondos - Kanguroo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000; }
+        .bg-custom-dark { background-color: #0b1120; }
+        .card-custom { background-color: #111827; border: 1px solid #1f2937; }
+        .badge-gold { background-color: #e5d399; color: #111827; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-custom-dark w-full max-w-md min-h-[600px] rounded-[30px] shadow-2xl p-8 flex flex-col items-center">
+        
+        <div class="w-full flex items-center mb-8">
+            <button onclick="window.location.href='menu.html'" class="text-white text-2xl mr-4 hover:opacity-70">←</button>
+            <h2 class="text-white font-bold uppercase tracking-wide">Agregar Fondos</h2>
+        </div>
+
+        <div class="card-custom w-full rounded-[30px] p-6 text-center flex flex-col items-center">
+            <h3 class="text-white font-bold text-xl mb-4">Depósito Directo</h3>
+            <p class="text-gray-400 text-sm mb-6 px-4">Escanea tu código QR personalizado desde tu billetera para procesar la inversión.</p>
+
+            <div class="bg-white p-4 rounded-2xl mb-6 shadow-lg">
+                <img src="qr.jpg" alt="QR Bitcoin" class="w-48 h-48 object-cover rounded-lg">
+            </div>
+
+            <div class="badge-gold font-bold px-6 py-3 rounded-xl uppercase tracking-widest text-sm">
+                Red Bitcoin (BTC)
+            </div>
+        </div>
+
+        <p class="text-gray-500 text-xs mt-8 text-center">
+            Asegúrate de enviar solo activos compatibles con la red seleccionada.
+        </p>
+
+    </div>
+
+</body>
+</html>
