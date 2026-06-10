@@ -1,5 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head><title>Test Menu</title></head>
-<body><h1>Si ves esto, el menu funciona</h1></body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Angelitus Trader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000; color: white; }
+        .bg-custom-dark { background-color: #0b1120; }
+        .input-custom { background-color: #111827; border: 1px solid #374151; color: white; }
+        .btn-gold { background-color: #e5d399; color: #111827; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-custom-dark w-full max-w-md rounded-[30px] shadow-2xl p-8">
+        <h2 class="text-2xl font-bold mb-6 text-center">Crear Cuenta</h2>
+        
+        <form id="registroForm" onsubmit="registrarUsuario(event)" class="space-y-4">
+            <input type="text" id="nombre" placeholder="Nombre y Apellido" class="w-full p-4 rounded-xl input-custom" required>
+            <input type="text" id="celular" placeholder="Número de celular" class="w-full p-4 rounded-xl input-custom" required>
+            <input type="password" id="password" placeholder="Contraseña" class="w-full p-4 rounded-xl input-custom" required>
+            
+            <button type="submit" id="btn-registro" class="w-full btn-gold font-bold py-4 rounded-xl hover:opacity-90 transition-opacity mt-4">
+                REGISTRARME
+            </button>
+        </form>
+
+        <p class="text-center mt-6 text-gray-400 text-sm">
+            ¿Ya tienes cuenta? <a href="index.html" class="text-blue-400 font-bold">Inicia sesión</a>
+        </p>
+    </div>
+
+    <script>
+        const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbxw6awm7Y0OoVlUFaLcjJD1nVN1VI0HIi2rTy15c9rKq4MWd3CsOERHyikKvZZfCLzKww/exec';
+
+        async function registrarUsuario(event) {
+            event.preventDefault();
+            
+            const btn = document.getElementById('btn-registro');
+            const nombre = document.getElementById('nombre').value;
+            const celular = document.getElementById('celular').value;
+            const password = document.getElementById('password').value;
+
+            btn.innerText = "REGISTRANDO...";
+            btn.disabled = true;
+
+            try {
+                // Enviamos los datos al script usando los parámetros correctos
+                const response = await fetch(`${URL_SCRIPT}?action=register&nombre=${encodeURIComponent(nombre)}&celular=${encodeURIComponent(celular)}&password=${encodeURIComponent(password)}`);
+                
+                alert("¡Registro exitoso! Ya puedes iniciar sesión.");
+                window.location.href = "index.html";
+            } catch (error) {
+                console.error(error);
+                alert("Error al registrar. Inténtalo de nuevo.");
+                btn.innerText = "REGISTRARME";
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
 </html>
