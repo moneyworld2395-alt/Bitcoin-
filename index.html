@@ -39,22 +39,32 @@
     </div>
 
     <script>
-        const btnLoginSubmit = document.getElementById('btn-login-submit');
+    const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbxw6awm7Y0OoVlUFaLcjJD1nVN1VI0HIi2rTy15c9rKq4MWd3CsOERHyikKvZZfCLzKww/exec';
 
-        function handleLogin(event) {
-            event.preventDefault();
-            
-            // Cambiamos el texto del botón para feedback visual
-            btnLoginSubmit.innerText = "PROCESANDO...";
-            btnLoginSubmit.disabled = true;
+    async function handleLogin(event) {
+        event.preventDefault();
+        const cel = document.getElementById('login-phone').value;
+        const pass = document.getElementById('login-password').value;
+        const btn = document.getElementById('btn-login-submit');
 
-            // Simulamos una verificación breve y enviamos al menú
-            // Esto evita que la página se quede congelada esperando conexión externa por ahora
-            setTimeout(() => {
-                alert('¡Credenciales verificadas exitosamente!');
-                window.location.href = "menu.html"; 
-            }, 1000);
+        btn.innerText = "VERIFICANDO...";
+        
+        try {
+            const response = await fetch(`${URL_SCRIPT}?action=getData&celular=${cel}&password=${pass}`);
+            const data = await response.json();
+
+            if (data.nombre) {
+                // Guardamos los datos para usarlos en el menú
+                localStorage.setItem('userCel', cel);
+                localStorage.setItem('userPass', pass);
+                window.location.href = "menu.html";
+            } else {
+                alert("Número o contraseña incorrectos");
+                btn.innerText = "ENTRAR";
+            }
+        } catch (error) {
+            alert("Error al conectar con el servidor");
+            btn.innerText = "ENTRAR";
         }
-    </script>
-</body>
-</html>
+    }
+</script>
